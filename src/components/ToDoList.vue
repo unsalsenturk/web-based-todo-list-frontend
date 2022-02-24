@@ -1,6 +1,7 @@
 <template>
-  <div id="todolist">
-    <h1> ToDoList </h1>
+  <div>
+    <section id="todolist">
+    </section>
   </div>
 </template>
 

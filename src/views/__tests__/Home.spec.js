@@ -1,5 +1,6 @@
 import {shallowMount} from "@vue/test-utils";
 import Home from "@/views/Home";
+import ToDoList from "@/components/ToDoList";
 
 
 describe("Home.vue", () => {
@@ -11,8 +12,8 @@ describe("Home.vue", () => {
         });
         it('should todo-list component exists', () => {
             const wrapper = shallowMount(Home)
-            const todo-list = wrapper.findComponent(todo-list)
-            expect(todo-list.exists()).toBeTruthy()
+            const ToDoListComponent = wrapper.findComponent(ToDoList)
+            expect(ToDoListComponent.exists()).toBeTruthy()
         });
     })
 })

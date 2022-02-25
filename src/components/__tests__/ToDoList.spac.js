@@ -2,11 +2,11 @@ import {shallowMount} from "@vue/test-utils";
 import ToDoList from "@/components/ToDoList";
 import API from "@/api";
 import flushPromises from "flush-promises";
-import toDoList from "@/components/ToDoList";
 
 jest.mock("@/api")
 const mockResponse = [
-    {"id": 1, "description": "dummy data"}
+    {"id": 1, "description": "dummy data"},
+    {"id": 2, "description": "dummy data"}
 ]
 const spyaddBtnClick = jest.spyOn(ToDoList.methods, 'addBtnClick')
 
@@ -56,11 +56,8 @@ describe("ToDoList.vue", () => {
             expect(localThis.todoList.push).toBeCalled()
         });
         it('created lifecycle test',  () => {
-            const localThis = {
-                todolist : []
-            }
-            toDoList.created.call(localThis)
-            expect(localThis.todolist).toEqual(mockResponse)
+            const todolistlength = wrapper.findAll("#todolist ul").length;
+            expect(todolistlength).toEqual(mockResponse.length)
         });
     })
 })

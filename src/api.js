@@ -1,7 +1,7 @@
 import axios from "axios";
 import adapter from "axios/lib/adapters/http"
 
-axios.defaults.adapter(adapter)
+axios.defaults.adapter = adapter;
 
 export class API {
     constructor(url) {
@@ -23,19 +23,13 @@ export class API {
 
     async getTodoList() {
         return axios
-            .get(this.withPath('/todolist'),{
-                headers : { Accept: "application/json; charset=utf-8",}
-            })
+            .get(this.withPath('/todolist'))
             .then(r => r.data)
     }
 
     async addTodo(todo) {
         return axios
-            .post(this.withPath('/todolist'),
-                todo
-            ,{
-                headers : { Accept: "application/json; charset=utf-8",}
-            })
+            .post(this.withPath('/todolist'), todo)
             .then(r => r.data)
 
     }

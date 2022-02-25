@@ -3,17 +3,20 @@ import ToDoList from "@/components/ToDoList";
 import API from "@/api";
 import flushPromises from "flush-promises";
 
-
-const mockResponse = [
-    {"id": 1, "description": ""}
-]
-
 jest.mock("@/api")
+const mockResponse = [
+    {"id": 1, "description": "dummy data"}
+]
+const spyaddBtnClick = jest.spyOn(ToDoList.methods, 'addBtnClick')
+
 
 describe("ToDoList.vue", () => {
     let wrapper
+
     beforeAll(async () => {
+
         API.getTodoList.mockResolvedValue(mockResponse)
+        API.addTodo.mockResolvedValue(mockResponse)
         wrapper = shallowMount(ToDoList)
         await flushPromises()
     })
@@ -36,11 +39,20 @@ describe("ToDoList.vue", () => {
     })
     describe("ToDoList component event test", () => {
         it("click event test", async () => {
-            wrapper.setMethods({
-                addBtnClick: jest.fn()
-            })
             await wrapper.find("#addBtn").trigger("click")
-            expect(wrapper.vm.addBtnClick).toHaveBeenCalled()
+            expect(spyaddBtnClick).toHaveBeenCalled()
+        });
+        it("click event test functionality test", async () => {
+            const localThis = {
+                todo: 'dummy',
+                todoList: {
+                    push: jest.fn()
+                },
+
+            }
+            await ToDoList.methods.addBtnClick.call(localThis)
+            expect(API.addTodo).toHaveBeenCalledWith(localThis.todo)
+            expect(localThis.todoList.push).toBeCalled()
         });
     })
 })

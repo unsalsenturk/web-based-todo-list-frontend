@@ -57,9 +57,6 @@ pactWith({
                         id: 1,
                         description: like("buy some milk")
                     }),
-                    headers: {
-                        Accept: "application/json; charset=utf-8",
-                    },
                 },
                 willRespondWith: {
                     status: 201,

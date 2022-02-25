@@ -9,6 +9,7 @@
           type="submit"
           value="Add"
           @click="addBtnClick"
+          v-model="todo"
       >
       <section
           id="todolist"
@@ -18,11 +19,19 @@
 </template>
 
 <script>
+import api from "@/api";
 export default {
   name: "ToDoList",
+  data() {
+    return {
+      todo: '',
+      todoList : []
+    }
+  },
   methods: {
-    addBtnClick() {
-      
+    async  addBtnClick() {
+      const res = await api.addTodo(this.todo)
+      this.todoList.push(res)
     }
   },
 }

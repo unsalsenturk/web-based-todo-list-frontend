@@ -43,9 +43,6 @@
       "request": {
         "method": "POST",
         "path": "/todolist",
-        "headers": {
-          "Accept": "application/json; charset=utf-8"
-        },
         "body": [
           {
             "id": 1,

@@ -12,8 +12,15 @@ pactWith({
     describe("todo list", () => {
 
         let api
-        beforeEach(() => {
 
+        const TODOLIST_DATA = [
+            {
+                id: 1,
+                description : "buy some milk"
+            },
+        ]
+
+        beforeEach(() => {
             api = new API(provider.mockService.baseUrl)
         })
         it('get to-do list', async () => {
@@ -36,11 +43,13 @@ pactWith({
                         })
                 }
             })
+            const res = await api.getTodoList()
+            expect(res).toEqual(TODOLIST_DATA)
         });
         it('add to do list', async () => {
             await provider.addInteraction({
                 state: "add todo list successfully",
-                uponReceiving: 'a request for getting all todo list',
+                uponReceiving: 'request to create to-do list',
                 withRequest: {
                     method: 'POST',
                     path: '/todolist',
@@ -49,7 +58,7 @@ pactWith({
                         description: like("buy some milk")
                     }),
                     headers: {
-                        "Content-Type": "application/json; charset=utf-8",
+                        Accept: "application/json; charset=utf-8",
                     },
                 },
                 willRespondWith: {
@@ -64,6 +73,9 @@ pactWith({
                         })
                 }
             })
+            const res = await api.addTodo(TODOLIST_DATA)
+            expect(res).toEqual(TODOLIST_DATA)
+
         });
     })
 })

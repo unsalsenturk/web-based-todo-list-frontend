@@ -23,16 +23,21 @@ export class API {
 
     async getTodoList() {
         return axios
-            .get(this.withPath('/todolist'))
+            .get(this.withPath('/todolist'),{
+                headers : { Accept: "application/json; charset=utf-8",}
+            })
             .then(r => r.data)
     }
 
     async addTodo(todo) {
         return axios
-            .post(this.withPath('/todolist'), {
-                task_description: todo
+            .post(this.withPath('/todolist'),
+                todo
+            ,{
+                headers : { Accept: "application/json; charset=utf-8",}
             })
             .then(r => r.data)
+
     }
 }
 

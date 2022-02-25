@@ -3,7 +3,7 @@ import adapter from "axios/lib/adapters/http"
 
 axios.defaults.adapter(adapter)
 
-export class API{
+export class API {
     constructor(url) {
         if (url === undefined || url === "") {
             url = process.env.VUE_APP_BASE_API_URL;
@@ -23,13 +23,13 @@ export class API{
 
     async getTodoList() {
         return axios
-            .get(this.withPath('/getTodoList'))
+            .get(this.withPath('/todolist'))
             .then(r => r.data)
     }
 
     async addTodo(todo) {
         return axios
-            .post(this.withPath('/addTodo'), {
+            .post(this.withPath('/todolist'), {
                 task_description: todo
             })
             .then(r => r.data)

@@ -8,6 +8,7 @@
           id="addBtn"
           type="submit"
           value="Add"
+          @click="addBtnClick"
       >
       <section
           id="todolist"
@@ -18,7 +19,12 @@
 
 <script>
 export default {
-  name: "ToDoList"
+  name: "ToDoList",
+  methods: {
+    addBtnClick() {
+      
+    }
+  },
 }
 </script>
 

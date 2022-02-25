@@ -6,7 +6,7 @@ axios.defaults.adapter(adapter)
 export class API {
     constructor(url) {
         if (url === undefined || url === "") {
-            url = process.env.VUE_APP_BASE_API_URL;
+            url = "http://localhost:3000/api/v1";
         }
         if (url.endsWith("/")) {
             url = url.substr(0, url.length - 1)

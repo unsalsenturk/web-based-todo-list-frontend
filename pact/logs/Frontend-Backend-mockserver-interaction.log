@@ -1,0 +1,103 @@
+W, [2022-02-25T21:24:33.197345 #7452]  WARN -- : Verifying - actual interactions do not match expected interactions. 
+Missing requests:
+	GET /todolist
+
+
+
+W, [2022-02-25T21:24:33.197345 #7452]  WARN -- : Missing requests:
+	GET /todolist
+
+
+
+E, [2022-02-25T21:24:33.259842 #7452] ERROR -- : No matching interaction found for POST /todolist
+E, [2022-02-25T21:24:33.259842 #7452] ERROR -- : Interaction diffs for that route:
+E, [2022-02-25T21:24:33.259842 #7452] ERROR -- : Diff with interaction: "a request for getting all todo list" given "add todo list successfully"
+Diff
+--------------------------------------
+Key: - is expected 
+     + is actual 
+Matching keys and values are not shown
+
+ {
+   "headers": {
+-    "Content-Type": "application/json; charset=utf-8"
++    "Content-Type": "application/json"
+   },
+-  "body": [
+-    {
+-      "id": 1,
+-      "description": "buy some milk"
+-    },
+-  ]
++  "body": {
++  }
+ }
+
+Description of differences
+--------------------------------------
+* Expected "application/json; charset=utf-8" but got "application/json" at $.headers.Content-Type
+* Expected an Array but got a Hash at $.body
+
+W, [2022-02-25T21:24:33.291093 #7452]  WARN -- : Verifying - actual interactions do not match expected interactions. 
+Incorrect requests:
+	POST /todolist (request headers and body did not match)
+
+Diff with interaction: "a request for getting all todo list" given "add todo list successfully"
+Diff
+--------------------------------------
+Key: - is expected 
+     + is actual 
+Matching keys and values are not shown
+
+ {
+   "headers": {
+-    "Content-Type": "application/json; charset=utf-8"
++    "Content-Type": "application/json"
+   },
+-  "body": [
+-    {
+-      "id": 1,
+-      "description": "buy some milk"
+-    },
+-  ]
++  "body": {
++  }
+ }
+
+Description of differences
+--------------------------------------
+* Expected "application/json; charset=utf-8" but got "application/json" at $.headers.Content-Type
+* Expected an Array but got a Hash at $.body
+
+
+W, [2022-02-25T21:24:33.291093 #7452]  WARN -- : Incorrect requests:
+	POST /todolist (request headers and body did not match)
+
+Diff with interaction: "a request for getting all todo list" given "add todo list successfully"
+Diff
+--------------------------------------
+Key: - is expected 
+     + is actual 
+Matching keys and values are not shown
+
+ {
+   "headers": {
+-    "Content-Type": "application/json; charset=utf-8"
++    "Content-Type": "application/json"
+   },
+-  "body": [
+-    {
+-      "id": 1,
+-      "description": "buy some milk"
+-    },
+-  ]
++  "body": {
++  }
+ }
+
+Description of differences
+--------------------------------------
+* Expected "application/json; charset=utf-8" but got "application/json" at $.headers.Content-Type
+* Expected an Array but got a Hash at $.body
+
+

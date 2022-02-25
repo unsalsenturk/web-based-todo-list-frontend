@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1> HOME PAGE</h1>
+  <div id="Home">
+    <h1>Web Based To Do List</h1>
     <to-do-list></to-do-list>
   </div>
 </template>
@@ -15,5 +15,15 @@ export default {
 </script>
 
 <style scoped>
-
+#Home {
+  background: #4568DC; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #B06AB3, #4568DC); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
 </style>

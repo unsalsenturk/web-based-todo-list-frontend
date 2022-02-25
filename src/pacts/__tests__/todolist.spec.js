@@ -64,8 +64,6 @@ pactWith({
                         })
                 }
             })
-            const res = await api.addTodo()
-            console.log(res)
         });
     })
 })

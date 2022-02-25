@@ -2,6 +2,7 @@ import {shallowMount} from "@vue/test-utils";
 import ToDoList from "@/components/ToDoList";
 import API from "@/api";
 import flushPromises from "flush-promises";
+import toDoList from "@/components/ToDoList";
 
 jest.mock("@/api")
 const mockResponse = [
@@ -42,7 +43,7 @@ describe("ToDoList.vue", () => {
             await wrapper.find("#addBtn").trigger("click")
             expect(spyaddBtnClick).toHaveBeenCalled()
         });
-        it("click event test functionality test", async () => {
+        it("click event test functionality (addBtnClick) test", async () => {
             const localThis = {
                 todo: 'dummy',
                 todoList: {
@@ -53,6 +54,13 @@ describe("ToDoList.vue", () => {
             await ToDoList.methods.addBtnClick.call(localThis)
             expect(API.addTodo).toHaveBeenCalledWith(localThis.todo)
             expect(localThis.todoList.push).toBeCalled()
+        });
+        it('created lifecycle test',  () => {
+            const localThis = {
+                todolist : []
+            }
+            toDoList.created.call(localThis)
+            expect(localThis.todolist).toEqual(mockResponse)
         });
     })
 })

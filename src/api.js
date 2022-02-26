@@ -29,7 +29,7 @@ export class API {
 
     async addTodo(todo) {
         return axios
-            .post(this.withPath('/todolist'), todo)
+            .post(this.withPath('/todolist'), {todo : todo})
             .then(r => r.data)
 
     }

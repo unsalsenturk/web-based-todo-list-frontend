@@ -13,6 +13,7 @@ pactWith({
 
         let api
 
+        const TODO = "buy some milk"
         const TODOLIST_DATA = {
             data: [
                 {
@@ -58,10 +59,7 @@ pactWith({
                     method: 'POST',
                     path: '/todolist',
                     body: {
-                        data: eachLike({
-                            id: 1,
-                            description: like("buy some milk")
-                        })
+                            todo: like("buy some milk")
                     },
                 },
                 willRespondWith: {
@@ -77,7 +75,7 @@ pactWith({
                     },
                 }
             })
-            const res = await api.addTodo(TODOLIST_DATA)
+            const res = await api.addTodo(TODO)
             expect(res).toEqual(TODOLIST_DATA)
 
         });

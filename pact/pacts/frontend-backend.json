@@ -46,21 +46,10 @@
         "method": "POST",
         "path": "/todolist",
         "body": {
-          "data": [
-            {
-              "id": 1,
-              "description": "buy some milk"
-            }
-          ]
+          "todo": "buy some milk"
         },
         "matchingRules": {
-          "$.body.data": {
-            "min": 1
-          },
-          "$.body.data[*].*": {
-            "match": "type"
-          },
-          "$.body.data[*].description": {
+          "$.body.todo": {
             "match": "type"
           }
         }

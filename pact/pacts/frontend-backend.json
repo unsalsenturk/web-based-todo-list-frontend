@@ -18,20 +18,22 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "body": [
-          {
-            "id": 1,
-            "description": "buy some milk"
-          }
-        ],
+        "body": {
+          "data": [
+            {
+              "id": 1,
+              "description": "buy some milk"
+            }
+          ]
+        },
         "matchingRules": {
-          "$.body": {
+          "$.body.data": {
             "min": 1
           },
-          "$.body[*].*": {
+          "$.body.data[*].*": {
             "match": "type"
           },
-          "$.body[*].description": {
+          "$.body.data[*].description": {
             "match": "type"
           }
         }
@@ -43,20 +45,22 @@
       "request": {
         "method": "POST",
         "path": "/todolist",
-        "body": [
-          {
-            "id": 1,
-            "description": "buy some milk"
-          }
-        ],
+        "body": {
+          "data": [
+            {
+              "id": 1,
+              "description": "buy some milk"
+            }
+          ]
+        },
         "matchingRules": {
-          "$.body": {
+          "$.body.data": {
             "min": 1
           },
-          "$.body[*].*": {
+          "$.body.data[*].*": {
             "match": "type"
           },
-          "$.body[*].description": {
+          "$.body.data[*].description": {
             "match": "type"
           }
         }
@@ -66,20 +70,22 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "body": [
-          {
-            "id": 1,
-            "description": "buy some milk"
-          }
-        ],
+        "body": {
+          "data": [
+            {
+              "id": 1,
+              "description": "buy some milk"
+            }
+          ]
+        },
         "matchingRules": {
-          "$.body": {
+          "$.body.data": {
             "min": 1
           },
-          "$.body[*].*": {
+          "$.body.data[*].*": {
             "match": "type"
           },
-          "$.body[*].description": {
+          "$.body.data[*].description": {
             "match": "type"
           }
         }

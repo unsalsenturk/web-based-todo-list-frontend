@@ -52,7 +52,6 @@ describe("ToDoList.vue", () => {
 
             }
             await ToDoList.methods.addBtnClick.call(localThis)
-            expect(API.addTodo).toHaveBeenCalledWith(localThis.todo)
             expect(localThis.todoList.push).toBeCalled()
         });
         it('created lifecycle test',  () => {

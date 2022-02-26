@@ -14,9 +14,11 @@
     <section
         id="todolist"
     >
-      <ul v-for="todo of todoList"
-          :key="todo.id">
-        {{todo.description}}
+      <ul
+          v-for="todoitem of todoList"
+          :key="todoitem.id"
+      >
+        {{ todoitem.description }}
       </ul>
     </section>
   </div>
@@ -35,6 +37,9 @@ export default {
   },
   methods: {
     async addBtnClick() {
+      if (this.todo === '')
+        return
+
       const res = await api.addTodo(this.todo)
       this.todoList.push(res)
     }

@@ -13,12 +13,14 @@ pactWith({
 
         let api
 
-        const TODOLIST_DATA = [
-            {
-                id: 1,
-                description : "buy some milk"
-            },
-        ]
+        const TODOLIST_DATA = {
+            data: [
+                {
+                    id: 1,
+                    description: "buy some milk"
+                },
+            ]
+        }
 
         beforeEach(() => {
             api = new API(provider.mockService.baseUrl)
@@ -36,11 +38,13 @@ pactWith({
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
                     },
-                    body:
-                        eachLike({
+                    body: {
+                        data: eachLike({
                             id: 1,
                             description: like("buy some milk")
                         })
+                    }
+
                 }
             })
             const res = await api.getTodoList()
@@ -53,21 +57,24 @@ pactWith({
                 withRequest: {
                     method: 'POST',
                     path: '/todolist',
-                    body: eachLike({
-                        id: 1,
-                        description: like("buy some milk")
-                    }),
+                    body: {
+                        data: eachLike({
+                            id: 1,
+                            description: like("buy some milk")
+                        })
+                    },
                 },
                 willRespondWith: {
                     status: 201,
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
                     },
-                    body:
-                        eachLike({
+                    body: {
+                        data: eachLike({
                             id: 1,
                             description: like("buy some milk")
                         })
+                    },
                 }
             })
             const res = await api.addTodo(TODOLIST_DATA)

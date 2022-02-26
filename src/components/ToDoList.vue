@@ -3,13 +3,14 @@
     <input
         id="addTxt"
         type="text"
+        v-model="todo"
     >
     <input
         id="addBtn"
         type="submit"
         value="Add"
         @click="addBtnClick"
-        v-model="todo"
+
     >
     <section
         id="todolist"
@@ -40,12 +41,13 @@ export default {
       if (this.todo === '')
         return
 
-      const res = await api.addTodo(this.todo)
-      this.todoList.push(res)
+      const {data} = await api.addTodo(this.todo)
+      this.todoList.push(data)
     }
   },
   async created() {
-    this.todoList = await api.getTodoList()
+    const {data} = await api.getTodoList()
+    this.todoList = data
   }
 }
 </script>

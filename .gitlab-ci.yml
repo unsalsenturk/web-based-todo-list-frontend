@@ -1,0 +1,55 @@
+stages:
+  - build
+  - test
+  - dockerize
+  - deploy2test
+
+cache:
+  key:
+    files:
+      - yarn.lock
+  paths:
+    - node_modules
+
+build:
+  image: node:lts-alpine
+  stage: build
+  script:
+    - yarn install
+    - yarn build
+  artifacts:
+    paths:
+      - "dist"
+
+test:
+  image: node:lts-alpine
+  stage: test
+  script:
+    - yarn install
+    - yarn test:unit
+
+dockerize:
+  image: docker:19.03.12
+  stage: dockerize
+  services:
+    - docker:19.03.12-dind
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
+
+deploy2test:
+  stage: deploy2test
+  image: google/cloud-sdk
+  script:
+    - echo $GKE_SERVICE_KEY | base64 -d > ~/encoded_serviceaccount.json
+    - gcloud auth activate-service-account --key-file ~/encoded_serviceaccount.json
+    - gcloud config set project $GKE_PROJECT_ID
+    - gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project serious-timer-342209
+    - kubectl apply -f ./deployment/frontend-secret.yaml
+    - kubectl apply -f ./deployment/frontend-deployment.yaml
+    - kubectl apply -f ./deployment/frontend-service.yaml
+
+
+
+

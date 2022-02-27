@@ -23,16 +23,16 @@ export class API {
 
     async getTodoList() {
         return axios
-            .get(this.withPath('/todolist'))
+            .get(this.withPath('/api/v1/todolist'))
             .then(r => r.data)
     }
 
     async addTodo(todo) {
         return axios
-            .post(this.withPath('/todolist'), {todo : todo})
+            .post(this.withPath('/api/v1/todolist'), {todo : todo})
             .then(r => r.data)
 
     }
 }
 
-export default new API("http://localhost:3000/api/v1")
+export default new API("http://localhost:3000")

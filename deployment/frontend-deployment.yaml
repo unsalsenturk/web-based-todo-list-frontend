@@ -16,7 +16,7 @@ spec:
         - name: gitlab-registry
       containers:
         - name: frontend
-          image: registry.gitlab.com/unsalsenturkk/test:latest
+          image: registry.gitlab.com/unsalsenturkk/frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80

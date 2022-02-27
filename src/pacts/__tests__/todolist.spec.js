@@ -13,18 +13,20 @@ pactWith({
 
         let api
 
-        const TODO = "buy some milk"
-        const GET_TODOLIST_RES = [
-            {
-                id: 1,
-                description: "buy some milk"
-            }
-        ]
-        const POST_TODOLIST_RES = {
-            id: 1,
-            description: "buy some milk"
+        const TODO = "buy some egg"
+        const GET_TODOLIST_RES =  {
+            "buy some milk":
+                {
+                    "id": 1,
+                    "description": "buy some milk"
+                }
         }
 
+
+        const POST_TODOLIST_RES = {
+            id: 2,
+            description: "buy some egg"
+        }
 
         beforeEach(() => {
             api = new API(provider.mockService.baseUrl)
@@ -35,20 +37,23 @@ pactWith({
                 uponReceiving: 'a request for getting all todo list',
                 withRequest: {
                     method: 'GET',
-                    path: '/todolist'
+                    path: '/api/v1/todolist'
                 },
                 willRespondWith: {
                     status: 200,
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
                     },
-                    body:
-                        eachLike({
-                            id: 1,
-                            description: like("buy some milk")
-                        })
+                    body: {
+                        "buy some milk":
+                            {
+                                "id": 1,
+                                "description": "buy some milk"
+                            }
+                    }
                 }
             })
+
             const res = await api.getTodoList()
             expect(res).toEqual(GET_TODOLIST_RES)
         });
@@ -58,9 +63,9 @@ pactWith({
                 uponReceiving: 'request to create to-do list',
                 withRequest: {
                     method: 'POST',
-                    path: '/todolist',
+                    path: '/api/v1/todolist',
                     body: {
-                        todo: like("buy some milk")
+                        todo: like("buy some egg")
                     },
                 },
                 willRespondWith: {
@@ -69,8 +74,8 @@ pactWith({
                         "Content-Type": "application/json; charset=utf-8",
                     },
                     body: {
-                        id: 1,
-                        description: like("buy some milk")
+                        id: 2,
+                        description: like("buy some egg")
                     },
                 }
             })
@@ -78,5 +83,18 @@ pactWith({
             expect(res).toEqual(POST_TODOLIST_RES)
 
         });
+
     })
 })
+
+const {Publisher} = require("@pact-foundation/pact")
+const opts = {
+    pactBroker: 'https://unsalsenturkk.pactflow.io',
+    pactBrokerToken: 'mCUautWrurN9Z4mTW4WMdA',
+    consumerVersion: "1.0.0",
+    //consumerVersion: process.env.GIT_COMMIT,
+    pactFilesOrDirs: ['pact/pacts'],
+};
+
+new Publisher(opts).publishPacts()
+

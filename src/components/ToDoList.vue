@@ -33,7 +33,8 @@ export default {
   data() {
     return {
       todo: '',
-      todoList: []
+      todoList: [],
+      error: ''
     }
   },
   methods: {
@@ -41,13 +42,27 @@ export default {
       if (this.todo === '')
         return
 
-      const res = await api.addTodo(this.todo)
-      this.todoList.push(res)
+      try {
+        const res = await api.addTodo(this.todo)
+        this.todoList.push(res)
+      } catch (e) {
+        console.error(e)
+        this.error = e
+      } finally {
+        this.todo = ''
+      }
+
     }
   },
   async created() {
-    const res = await api.getTodoList()
-    this.todoList = res
+    try {
+      const res = await api.getTodoList()
+      this.todoList = res
+    } catch (e) {
+      console.error(e)
+      this.error = e
+    }
+
   }
 }
 </script>

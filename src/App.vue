@@ -1,6 +1,5 @@
 <template>
   <Home>
-
   </Home>
 </template>
 

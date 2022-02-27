@@ -14,14 +14,17 @@ pactWith({
         let api
 
         const TODO = "buy some milk"
-        const TODOLIST_DATA = {
-            data: [
-                {
-                    id: 1,
-                    description: "buy some milk"
-                },
-            ]
+        const GET_TODOLIST_RES = [
+            {
+                id: 1,
+                description: "buy some milk"
+            }
+        ]
+        const POST_TODOLIST_RES = {
+            id: 1,
+            description: "buy some milk"
         }
+
 
         beforeEach(() => {
             api = new API(provider.mockService.baseUrl)
@@ -39,17 +42,15 @@ pactWith({
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
                     },
-                    body: {
-                        data: eachLike({
+                    body:
+                        eachLike({
                             id: 1,
                             description: like("buy some milk")
                         })
-                    }
-
                 }
             })
             const res = await api.getTodoList()
-            expect(res).toEqual(TODOLIST_DATA)
+            expect(res).toEqual(GET_TODOLIST_RES)
         });
         it('add to do list', async () => {
             await provider.addInteraction({
@@ -59,7 +60,7 @@ pactWith({
                     method: 'POST',
                     path: '/todolist',
                     body: {
-                            todo: like("buy some milk")
+                        todo: like("buy some milk")
                     },
                 },
                 willRespondWith: {
@@ -68,15 +69,13 @@ pactWith({
                         "Content-Type": "application/json; charset=utf-8",
                     },
                     body: {
-                        data: eachLike({
-                            id: 1,
-                            description: like("buy some milk")
-                        })
+                        id: 1,
+                        description: like("buy some milk")
                     },
                 }
             })
             const res = await api.addTodo(TODO)
-            expect(res).toEqual(TODOLIST_DATA)
+            expect(res).toEqual(POST_TODOLIST_RES)
 
         });
     })

@@ -4,12 +4,11 @@ import API from "@/api";
 import flushPromises from "flush-promises";
 
 jest.mock("@/api")
-const mockResponse = {
-    "data": [
-        {"id": 1, "description": "dummy data"},
-        {"id": 2, "description": "dummy data"}
-    ]
-}
+const mockResponse = [
+    {"id": 1, "description": "dummy data"},
+    {"id": 2, "description": "dummy data"}
+]
+
 const spyaddBtnClick = jest.spyOn(ToDoList.methods, 'addBtnClick')
 
 
@@ -59,7 +58,7 @@ describe("ToDoList.vue", () => {
         it('created lifecycle test', () => {
             const todolistlength = wrapper.findAll("#todolist ul").length;
 
-            expect(todolistlength).toEqual(mockResponse.data.length)
+            expect(todolistlength).toEqual(mockResponse.length)
         });
     })
 })

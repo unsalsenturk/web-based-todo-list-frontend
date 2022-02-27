@@ -41,13 +41,13 @@ export default {
       if (this.todo === '')
         return
 
-      const {data} = await api.addTodo(this.todo)
-      this.todoList.push(data)
+      const res = await api.addTodo(this.todo)
+      this.todoList.push(res)
     }
   },
   async created() {
-    const {data} = await api.getTodoList()
-    this.todoList = data
+    const res = await api.getTodoList()
+    this.todoList = res
   }
 }
 </script>

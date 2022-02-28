@@ -43,8 +43,8 @@ export default {
         return
 
       try {
-        const {data} = await api.addTodo(this.todo)
-        this.todoList.push(data)
+        const res = await api.addTodo(this.todo)
+        this.todoList.push(res)
       } catch (e) {
         console.error(e)
         this.error = e

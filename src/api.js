@@ -22,13 +22,13 @@ export class API {
     }
 
     async getTodoList() {
-        return axios
+        return  axios
             .get(this.withPath('/api/v1/todolist'))
             .then(r => r.data)
     }
 
     async addTodo(todo) {
-        return axios
+        return  axios
             .post(this.withPath('/api/v1/todolist'), {todo : todo})
             .then(r => r.data)
 

@@ -14,14 +14,12 @@ pactWith({
         let api
 
         const TODO = "buy some egg"
-        const GET_TODOLIST_RES =  {
-            "buy some milk":
-                {
-                    "id": 1,
-                    "description": "buy some milk"
-                }
-        }
-
+        const GET_TODOLIST_RES =  [
+            {
+                "id": 1,
+                "description": "buy some milk"
+            }
+        ]
 
         const POST_TODOLIST_RES = {
             id: 2,
@@ -44,13 +42,12 @@ pactWith({
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
                     },
-                    body: {
-                        "buy some milk":
-                            {
-                                "id": 1,
-                                "description": "buy some milk"
-                            }
-                    }
+                    body: [
+                        {
+                            "id": 1,
+                            "description": "buy some milk"
+                        }
+                    ]
                 }
             })
 

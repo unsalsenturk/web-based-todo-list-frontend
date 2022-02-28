@@ -10,6 +10,7 @@
         type="submit"
         value="Add"
         @click="addBtnClick"
+
     >
     <section
         id="todolist"

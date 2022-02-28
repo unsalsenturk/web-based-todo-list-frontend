@@ -35,4 +35,4 @@ export class API {
     }
 }
 
-export default new API("http://localhost:3000")
+export default new API("http://35.222.60.250")

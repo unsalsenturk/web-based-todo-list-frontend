@@ -15,11 +15,13 @@
     <section
         id="todolist"
     >
-      <ul
-          v-for="todoitem of todoList"
-          :key="todoitem.id"
-      >
-        {{ todoitem.description }}
+      <ul>
+        <li
+            v-for="todoitem of todoList"
+            :key="todoitem.id"
+        >
+          {{ todoitem.description }}
+        </li>
       </ul>
     </section>
   </div>

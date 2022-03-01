@@ -1,9 +1,9 @@
 stages:
-  - e2e-acceptence-test
   - build
   - test
   - dockerize
   - deploy2test
+  - e2e-acceptence-test
 
 cache:
   key:
@@ -53,8 +53,6 @@ deploy2test:
     - kubectl apply -f ./deployment/frontend-service.yaml
 
 trigger_pipeline:
-  trigger:
-    strategy: depend
   stage: e2e-acceptence-test
   script:
     - 'curl --fail --request POST --form token=3cda03c00901af965a31f7b7cb4e54 --form ref=main "https://gitlab.com/api/v4/projects/34008397/trigger/pipeline"'

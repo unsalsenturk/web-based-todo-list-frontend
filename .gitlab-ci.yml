@@ -1,9 +1,10 @@
 stages:
+  - e2e-acceptence-test
   - build
   - test
   - dockerize
   - deploy2test
-  - e2e-acceptence-test
+
 
 cache:
   key:
@@ -56,7 +57,8 @@ e2e-acceptence-test:
   stage: e2e-acceptence-test
   trigger:
     strategy: depend
-    project: unsalsenturkk/web-based-todo-list-e2e-acceptence
+    script:
+      - 'curl --fail --request POST --form token=3cda03c00901af965a31f7b7cb4e54 --form ref=main "https://gitlab.example.com/api/v4/projects/34008397/trigger/pipeline"'
 
 
 

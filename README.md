@@ -1,24 +1,30 @@
-# vue-app
+# Web Based ToDo List Application
 
-## Project setup
-```
-yarn install
-```
+## Tech Stack
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+<ol>
+<li> Vue (frontend) 
+    <ol>
+        <li>axios (API calls)</li>
+        <li>unit tests (vue-test-utils)</li>
+        <li>e2e tests (puppeteer cucumber)</li>
+        <li>consumer driven contract test and publisher broker</li>
+    </ol>
+</li>
 
-### Compiles and minifies for production
-```
-yarn build
-```
+<li>Nginx (Web server)</li>
 
-### Run your unit tests
-```
-yarn test:unit
-```
+<li>Docker</li>
+<li>Gitlab CI/CD Pipeline(CI)</li>
+<li>Google Cloud Kubernetes</li>
+</ol>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Pipeline automation
+
+![](public/pipeline.PNG)
+
+## Unit Test
+
+![](public/unit_tests.gif)
+
+

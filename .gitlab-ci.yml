@@ -54,7 +54,6 @@ deploy2test:
 
 e2e-acceptence-test:
   trigger:
-    strategy: depend
     project: /unsalsenturkk/web-based-todo-list-e2e-acceptence
 
 

@@ -16,7 +16,7 @@ spec:
         - name: gitlab-registry
       containers:
         - name: frontend
-          image: registry.gitlab.com/unsalsenturkk/web-based-todo-list-frontend:f8429ce8
+          image: registry.gitlab.com/unsalsenturkk/web-based-todo-list-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80

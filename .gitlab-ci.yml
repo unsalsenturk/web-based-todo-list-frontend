@@ -56,7 +56,7 @@ deploy2test:
 trigger_pipeline:
   stage: e2e-acceptence-test
   script:
-    - 'curl --fail --request POST --form token=3cda03c00901af965a31f7b7cb4e54 --form ref=main "https://gitlab.example.com/api/v4/projects/34008397/trigger/pipeline"'
+    - 'curl --fail --request POST --form token=3cda03c00901af965a31f7b7cb4e54 --form ref=main "https://gitlab.com/api/v4/projects/34008397/trigger/pipeline"'
 
 
 

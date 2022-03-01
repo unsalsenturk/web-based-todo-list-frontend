@@ -56,7 +56,7 @@ describe("ToDoList.vue", () => {
             expect(localThis.todoList.push).toBeCalled()
         });
         it('created lifecycle test',  async () => {
-            const todolistlength = wrapper.findAll("#todolist ul").length;
+            const todolistlength = wrapper.findAll("#todolist ul li").length;
 
             expect(todolistlength).toEqual(mockResponse.length)
         });

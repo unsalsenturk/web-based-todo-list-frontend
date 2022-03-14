@@ -13,7 +13,7 @@ spec:
         app: frontend
     spec:
       imagePullSecrets:
-        - name: gitlab-registry
+        - name: gitlab-registry-frontend
       containers:
         - name: frontend
           image: registry.gitlab.com/unsalsenturkk/web-based-todo-list-frontend:latest
